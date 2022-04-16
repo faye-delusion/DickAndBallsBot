@@ -92,21 +92,6 @@ class spotify_(commands.Cog):
 
         await ctx.respond(embed=discord.Embed(title=f"{user.name} is not listening to anything at the moment.", colour=discord.Colour.random()))
 
-    @slash_command(name="spotify")
-    async def spotify_slashglobal(self,ctx,user: discord.Option(discord.Member) = None, viewable = False):
-
-        user = user or ctx.guild.get_member(ctx.author.id)
-
-        for activity in user.activites:
-
-            if type(activity) == discord.Spotify:
-
-                output = await spotify(ctx,user,activity)
-
-                return await ctx.respond(embed = output, ephemeral = not viewable)
-
-
-
 def setup(bot):
 
     bot.add_cog(spotify_(bot))

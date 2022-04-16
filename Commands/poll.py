@@ -44,13 +44,6 @@ class poll_(commands.Cog):
 
         await ctx.respond("Poll started 🙂", ephemeral=True)
 
-    @slash_command(name="poll")
-    async def poll_slashglobal(self,ctx,subject:str):
-
-        await poll(ctx, subject)
-
-        await ctx.respond("Poll started 🙂", ephemeral=True)
-
     @message_command(name="Run as Poll", guild_ids=guilds)
     async def poll_message(self,ctx,message: discord.Message):
 
@@ -59,16 +52,6 @@ class poll_(commands.Cog):
         await poll(ctx, subject)
 
         await ctx.respond("Poll started 🙂", ephemeral=True)
-
-    @message_command(name="Run as Poll")
-    async def poll_messageglobal(self,ctx,message: discord.Message):
-
-        subject = message.content
-
-        await poll(ctx, subject)
-
-        await ctx.respond("Poll started 🙂", ephemeral = True)
-
         
 def setup(bot):
 

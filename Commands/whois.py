@@ -96,15 +96,6 @@ class whois_(commands.Cog):
 
         await ctx.respond(embed=output, ephemeral = not viewable)
 
-    @slash_command(name = "whois")
-    async def whois_slashglobal(self, ctx, user: discord.Option(discord.User) = None, viewable: discord.Option(bool) = True):
-
-        user = user or ctx.author
-
-        output = await whois(ctx, user)
-
-        await ctx.respond(embed=output, ephemeral = not viewable)
-
     @user_command(name = "Who is", guild_ids=guilds)
     async def whois_user(self,ctx,user: discord.User):
 
@@ -112,24 +103,8 @@ class whois_(commands.Cog):
 
         await ctx.respond(embed = output, ephemeral = True)
 
-    @user_command(name = "Who is")
-    async def whois_userglobal(self,ctx,user: discord.User):
-
-        output = await whois(ctx,user)
-
-        await ctx.respond(embed = output, ephemeral = True)
-
     @message_command(name="Who is", guild_ids=guilds)
     async def whois_message(self,ctx,message:discord.Message):
-
-        user = message.author
-
-        output = await whois(ctx, user)
-
-        await ctx.respond(embed=output, ephemeral = True)
-
-    @message_command(name="Who is")
-    async def whois_messageglobal(self,ctx,message:discord.Message):
 
         user = message.author
 

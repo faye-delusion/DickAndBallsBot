@@ -21,7 +21,7 @@ async def reload(bot, ctx, extension:str = None):
 
                 bot.reload_extension(f"Commands.{filename}")
 
-                commands.append(filename)
+                commands_.append(filename)
 
             for file in os.listdir("Events"):
 
