@@ -72,5 +72,12 @@ class generate_alt_(commands.Cog):
 
         await ctx.respond(embed=output, ephemeral = not viewable)
 
+    @slash_command(name="alt")
+    async def altname_slashglobal(self,ctx,viewable: discord.Option(bool) = True):
+
+        output = await generate_alt(ctx)
+
+        await ctx.respond(embed=output, ephemeral = not viewable)
+
 def setup(bot):
     bot.add_cog(generate_alt_(bot))
