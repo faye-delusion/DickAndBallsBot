@@ -8,7 +8,8 @@ import asyncio
 import random
 
 # Create bot instance
-bot = commands.Bot(command_prefix=">>", intents=discord.Intents.all())
+intents = discord.Intents.all()
+bot = commands.Bot(command_prefix=">>", intents=intents)
 
 config = {}
 
