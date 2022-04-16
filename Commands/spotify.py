@@ -67,13 +67,11 @@ class spotify_(commands.Cog):
 
         user = user or ctx.author
 
-        print(type(user))
+        for activity in user.activities:
 
-        for i in user.activities:
+            if type(activity) == discord.Spotify:
 
-            if type(i) == discord.Spotify:
-
-                output = await spotify(ctx,user,i)
+                output = await spotify(ctx,user,activity)
 
                 return await ctx.reply(embed=output)
 
@@ -82,22 +80,32 @@ class spotify_(commands.Cog):
     @slash_command(name="spotify", guild_ids=guilds)
     async def spotify_slash(self,ctx,user: discord.Option(discord.Member) = None, viewable: discord.Option(bool) = True):
 
-        user = user or ctx.author
+        user = user or ctx.guild.get_member(ctx.author.id)
 
-        print(type(user))
-        print(dir(user))
+        for activity in user.activities:
 
-        for i in user.activities:
+            if type(activity) == discord.Spotify:
 
-            print(type(i))
-
-            if type(i) == discord.Spotify:
-
-                output = await spotify(ctx,user,i)
+                output = await spotify(ctx,user,activity)
 
                 return await ctx.respond(embed=output, ephemeral = not viewable)
 
         await ctx.respond(embed=discord.Embed(title=f"{user.name} is not listening to anything at the moment.", colour=discord.Colour.random()))
+
+    @slash_command(name="spotify")
+    async def spotify_slashglobal(self,ctx,user: discord.Option(discord.Member) = None, viewable = False):
+
+        user = user or ctx.guild.get_member(ctx.author.id)
+
+        for activity in user.activites:
+
+            if type(activity) == discord.Spotify:
+
+                output = await spotify(ctx,user,activity)
+
+                return await ctx.respond(embed = output, ephemeral = not viewable)
+
+
 
 def setup(bot):
 
