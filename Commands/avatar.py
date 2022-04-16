@@ -46,6 +46,15 @@ class avatar_(commands.Cog):
 
         await ctx.respond(embed=output, ephemeral = not viewable)
 
+    @slash_command(name="avatar")
+    async def avatar_slashglobal(self,ctx,user: discord.Option(discord.Member) = None, viewable: discord.Option(bool) = True):
+
+        user = user or ctx.author
+
+        output = await avatar(ctx,user)
+
+        await ctx.respond(embed=output, ephemeral = not viewable)
+
 def setup(bot):
 
     bot.add_cog(avatar_(bot))
