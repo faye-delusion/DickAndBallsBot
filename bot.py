@@ -7,15 +7,41 @@ import os
 import asyncio
 import random
 
-# Create bot instance
-intents = discord.Intents.all()
-bot = commands.Bot(command_prefix=">>", intents=intents)
-
 config = {}
-
 with open("config.json", "r") as file:
 
     config = json.load(file)
+
+# Create bot instance
+intents = discord.Intents.all()
+
+# update value to false to enable globally
+debug = True
+
+global bot
+
+if debug:
+
+    bot = commands.Bot(
+
+        command_prefix=">>",
+        intents=intents,
+        debug_guilds=config["test_guilds"]
+
+    )
+
+else:
+
+    bot = commands.Bot(
+        
+        command_prefix=">>", 
+        intents=intents
+        
+    )
+
+
+
+
 
 @bot.event
 async def on_ready():
