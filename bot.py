@@ -37,9 +37,9 @@ async def on_ready():
 
                 bot.load_extension(f"Commands.{filename}")
 
-            except:
+            except Exception as e:
 
-                print(f"Failed to load command {filename} ({count} / {len(os.listdir('Commands')) -1})")
+                print(f"Failed to load command {filename} ({count} / {len(os.listdir('Commands')) -1})\n{e}")
 
             else:
                 
@@ -85,7 +85,7 @@ async def on_ready():
     await asyncio.sleep(0.3)
     print("------------------------------------------------------------------------------------------------")
     await asyncio.sleep(0.7)
-    print(f"Written by: {config['author']['name']} ({config['author']['email']})")
+    print(f"Written by: d0lph_n (alexx#0115)")
     await asyncio.sleep(0.3)
     print(f"Last Restart: {datetime.datetime.utcfromtimestamp(config['last_restart']).strftime('%Y-%m-%d %H:%M:%S')} UTC")
 
