@@ -15,3 +15,15 @@ config should look something like this
 
 }
 ```
+
+## Libs (LOOOOOL like politics) n shit you will need (probably missing some shout at me if any are missing)
+### some of these come preinstalled but i dont CARE sadly
+
+- pycord (dev build)
+- os
+- sys
+- textwrap
+- io
+- contextlib
+- traceback
+- requests
