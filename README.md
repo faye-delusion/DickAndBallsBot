@@ -27,3 +27,4 @@ config should look something like this
 - contextlib
 - traceback
 - requests
+- psutil
